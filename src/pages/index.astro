@@ -1,0 +1,15 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import StatCard from '../components/StatCard.vue';
+import '../styles/stat-card.css';
+import '../styles/grid.css';
+---
+
+<DashboardLayout title="Overview">
+  <div class="grid">
+    <StatCard label="Total Users" value="12,430" delta={4.2} client:load />
+    <StatCard label="Revenue" value="84,200" unit="€" delta={-1.8} client:load />
+    <StatCard label="Sessions" value="38,910" delta={7.1} client:load />
+    <StatCard label="Bounce Rate" value="42.3" unit="%" delta={-2.4} client:load />
+  </div>
+</DashboardLayout>
