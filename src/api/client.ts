@@ -2,7 +2,7 @@ import { getAccessToken } from '../utils/token';
 import { handleUnauthorized, redirectToLogin } from './interceptors';
 import type { ApiError } from '../types/api';
 
-const BASE_URL = 'https://api.jjlmoya.es/api/v1';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 
 function buildUrl(path: string, params?: Record<string, string>): string {
   const url = new URL(`${BASE_URL}${path}`);
