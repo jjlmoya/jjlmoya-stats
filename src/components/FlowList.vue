@@ -18,7 +18,10 @@ async function fetchFlow(): Promise<void> {
     edges.value = res.data.edges;
   } catch (e) {
     const err = e as { code?: string; message?: string };
-    error.value = err.message ?? 'Failed to load flow';
+    const forbidden = err.code === 'FORBIDDEN' || err.message === 'Forbidden';
+    error.value = forbidden
+      ? 'Sin acceso. Contacta con juanjo1989@gmail.com para solicitar permisos.'
+      : (err.message ?? 'Failed to load flow');
   }
 
   loading.value = false;
