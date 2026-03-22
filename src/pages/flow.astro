@@ -1,0 +1,9 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import FlowList from '../components/FlowList.vue';
+import '../styles/flow-list.css';
+---
+
+<DashboardLayout title="Flow">
+  <FlowList client:load />
+</DashboardLayout>

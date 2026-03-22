@@ -1,6 +1,12 @@
 ---
 import '../styles/theme.css';
 import '../styles/layout.css';
+import '../styles/sidebar-nav.css';
+import '../styles/logout-button.css';
+import '../styles/auth-guard.css';
+import SidebarNav from '../components/SidebarNav.vue';
+import LogoutButton from '../components/LogoutButton.vue';
+import AuthGuard from '../components/AuthGuard.vue';
 
 interface Props {
   title?: string;
@@ -14,27 +20,27 @@ const { title = 'Stats Dashboard' } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
-    <div class="layout">
-      <aside class="layout__sidebar">
-        <div class="layout__logo">
-          <span class="layout__logo-text">Stats</span>
-        </div>
-        <nav class="layout__nav">
-          <a class="layout__link layout__link--active" href="/">Overview</a>
-        </nav>
-      </aside>
-      <main class="layout__main">
-        <header class="layout__header">
-          <h1 class="layout__title">{title}</h1>
-        </header>
-        <div class="layout__content">
-          <slot />
-        </div>
-      </main>
-    </div>
+    <AuthGuard client:load>
+      <div class="layout">
+        <aside class="layout__sidebar">
+          <div class="layout__logo">
+            <span class="layout__logo-text">Stats</span>
+          </div>
+          <SidebarNav client:load />
+          <LogoutButton client:load />
+        </aside>
+        <main class="layout__main">
+          <header class="layout__header">
+            <h1 class="layout__title">{title}</h1>
+          </header>
+          <div class="layout__content">
+            <slot />
+          </div>
+        </main>
+      </div>
+    </AuthGuard>
   </body>
 </html>

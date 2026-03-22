@@ -1,0 +1,13 @@
+---
+import AuthLayout from '../layouts/AuthLayout.astro';
+import LoginButtons from '../components/LoginButtons.vue';
+import '../styles/login.css';
+import '../styles/login-buttons.css';
+---
+
+<AuthLayout title="Login">
+  <div class="login">
+    <h1 class="login__title">Stats Dashboard</h1>
+    <LoginButtons client:load />
+  </div>
+</AuthLayout>

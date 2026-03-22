@@ -1,0 +1,16 @@
+.auth-guard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.auth-guard__text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.auth-guard__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+}

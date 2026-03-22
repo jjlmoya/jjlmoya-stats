@@ -1,0 +1,19 @@
+---
+import AuthLayout from '../../layouts/AuthLayout.astro';
+import CallbackHandler from '../../components/CallbackHandler.vue';
+import '../../styles/auth-guard.css';
+
+export function getStaticPaths() {
+  return [
+    { params: { provider: 'google' } },
+    { params: { provider: 'discord' } },
+    { params: { provider: 'twitch' } },
+  ];
+}
+
+const { provider } = Astro.params;
+---
+
+<AuthLayout title="Authenticating">
+  <CallbackHandler provider={provider} client:load />
+</AuthLayout>

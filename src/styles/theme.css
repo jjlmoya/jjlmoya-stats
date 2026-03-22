@@ -33,6 +33,9 @@
   --color-accent-hover: #818cf8;
   --color-success: #34d399;
   --color-danger: #f87171;
+  --color-google: #4285f4;
+  --color-discord: #5865f2;
+  --color-twitch: #9146ff;
 }
 
 @media (prefers-color-scheme: light) {

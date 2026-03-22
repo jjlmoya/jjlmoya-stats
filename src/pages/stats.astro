@@ -1,0 +1,10 @@
+---
+import DashboardLayout from '../layouts/DashboardLayout.astro';
+import StatsPage from '../components/StatsPage.vue';
+import '../styles/stats-filter.css';
+import '../styles/stats-table.css';
+---
+
+<DashboardLayout title="Stats">
+  <StatsPage client:load />
+</DashboardLayout>
