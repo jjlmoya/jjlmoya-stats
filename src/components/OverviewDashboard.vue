@@ -1,31 +1,22 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed } from 'vue';
 import { useStats } from '../composables/useStats';
 import StatCard from './StatCard.vue';
-import StatsTable from './StatsTable.vue';
+import PeriodFilter from './PeriodFilter.vue';
+import ProgressBar from './ProgressBar.vue';
 import NoPermission from './NoPermission.vue';
 
-interface Period {
-  label: string;
-  key: string;
-}
-
-const PERIODS: Period[] = [
-  { label: 'Hoy', key: 'today' },
-  { label: '24h', key: '24h' },
-  { label: '48h', key: '48h' },
-  { label: '7 días', key: '7d' },
-  { label: '1 mes', key: '30d' },
-  { label: '3 meses', key: '90d' },
-];
-
 const { data, loading, error, forbidden, fetchStats } = useStats();
-const activePeriod = ref('today');
+const periodLabel = ref('Hoy');
 
 const totalViews = computed(() => data.value.reduce((s, r) => s + r.totalViews, 0));
 const totalUnique = computed(() => data.value.reduce((s, r) => s + r.uniqueVisits, 0));
 
-const activePeriodLabel = computed(() => PERIODS.find((p) => p.key === activePeriod.value)?.label ?? '');
+const topPages = computed(() =>
+  [...data.value].sort((a, b) => b.totalViews - a.totalViews).slice(0, 8),
+);
+
+const maxViews = computed(() => topPages.value[0]?.totalViews ?? 1);
 
 const todayLabel = computed(() =>
   new Date().toLocaleDateString('es-ES', {
@@ -36,63 +27,50 @@ const todayLabel = computed(() =>
   }),
 );
 
-function rangeForPeriod(key: string): { from: string; to: string } {
-  const now = new Date();
-  const to = now.toISOString();
-
-  if (key === 'today') {
-    const from = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    return { from: from.toISOString(), to };
-  }
-
-  const hours: Record<string, number> = { '24h': 24, '48h': 48, '7d': 168, '30d': 720, '90d': 2160 };
-  const h = hours[key] ?? 24;
-  const from = new Date(now.getTime() - h * 60 * 60 * 1000);
-  return { from: from.toISOString(), to };
-}
-
-function selectPeriod(key: string): void {
-  activePeriod.value = key;
-  const { from, to } = rangeForPeriod(key);
+function onPeriodChange(from: string, to: string, label: string): void {
+  periodLabel.value = label;
   fetchStats({ from, to });
 }
-
-onMounted(() => selectPeriod('today'));
 </script>
 
 <template>
-  <div v-if="loading" class="auth-guard">
-    <span class="auth-guard__text">Cargando stats...</span>
-  </div>
-  <NoPermission v-else-if="forbidden" />
-  <div v-else-if="error" class="auth-guard">
-    <span class="auth-guard__error">{{ error }}</span>
-  </div>
-  <div v-else class="overview">
+  <div class="overview">
     <div class="overview__header">
-      <span class="overview__period">{{ activePeriodLabel }}</span>
+      <span class="overview__period">{{ periodLabel }}</span>
       <span class="overview__date">{{ todayLabel }}</span>
     </div>
-    <div class="overview__filters">
-      <button
-        v-for="p in PERIODS"
-        :key="p.key"
-        :class="['overview__filter-btn', { 'overview__filter-btn--active': activePeriod === p.key }]"
-        @click="selectPeriod(p.key)"
-      >
-        {{ p.label }}
-      </button>
+    <PeriodFilter initial-period="today" @change="onPeriodChange" />
+    <div v-if="loading" class="auth-guard">
+      <span class="auth-guard__text">Cargando stats...</span>
     </div>
-    <div class="overview__cards">
-      <StatCard label="Visitas totales" :value="totalViews" />
-      <StatCard label="Visitas únicas" :value="totalUnique" />
-      <StatCard label="Páginas" :value="data.length" />
+    <NoPermission v-else-if="forbidden" />
+    <div v-else-if="error" class="auth-guard">
+      <span class="auth-guard__error">{{ error }}</span>
     </div>
-    <div class="overview__section">
-      <span class="overview__section-title">Desglose por página</span>
-      <div class="overview__table-wrap">
-        <StatsTable :data="data" />
+    <template v-else>
+      <div class="overview__cards">
+        <StatCard label="Visitas totales" :value="totalViews" />
+        <StatCard label="Visitas únicas" :value="totalUnique" />
+        <StatCard label="Páginas activas" :value="data.length" />
       </div>
-    </div>
+      <div v-if="topPages.length > 0" class="overview__section">
+        <span class="overview__section-title">Top páginas</span>
+        <div class="overview__top">
+          <div v-for="(page, i) in topPages" :key="page.page" class="overview__top-item">
+            <span class="overview__top-rank">{{ i + 1 }}</span>
+            <div class="overview__top-info">
+              <div class="overview__top-meta">
+                <span class="overview__top-page">{{ page.page }}</span>
+                <span class="overview__top-count">{{ page.totalViews }}</span>
+              </div>
+              <ProgressBar :pct="Math.round((page.totalViews / maxViews) * 100)" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="overview__empty">
+        Sin datos para este periodo
+      </div>
+    </template>
   </div>
 </template>
