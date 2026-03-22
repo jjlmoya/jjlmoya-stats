@@ -1,0 +1,25 @@
+.sidebar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.sidebar-toggle:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
+
+@media (width <= 768px) {
+  .sidebar-toggle {
+    display: flex;
+  }
+}

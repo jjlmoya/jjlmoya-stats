@@ -32,6 +32,7 @@
   --color-accent: #6366f1;
   --color-accent-hover: #818cf8;
   --color-on-accent: #fff;
+  --color-overlay: rgb(0 0 0 / 50%);
   --color-success: #34d399;
   --color-danger: #f87171;
   --color-google: #4285f4;
