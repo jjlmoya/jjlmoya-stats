@@ -35,7 +35,7 @@
 .stats-filter__button {
   padding: var(--spacing-sm) var(--spacing-xl);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text);
+  color: var(--color-on-accent);
   cursor: pointer;
   background-color: var(--color-accent);
   border: none;

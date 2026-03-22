@@ -4,9 +4,12 @@ import '../styles/layout.css';
 import '../styles/sidebar-nav.css';
 import '../styles/logout-button.css';
 import '../styles/auth-guard.css';
+import '../styles/no-permission.css';
+import '../styles/theme-toggle.css';
 import SidebarNav from '../components/SidebarNav.vue';
 import LogoutButton from '../components/LogoutButton.vue';
 import AuthGuard from '../components/AuthGuard.vue';
+import ThemeToggle from '../components/ThemeToggle.vue';
 
 interface Props {
   title?: string;
@@ -35,6 +38,7 @@ const { title = 'Stats Dashboard' } = Astro.props;
         <main class="layout__main">
           <header class="layout__header">
             <h1 class="layout__title">{title}</h1>
+            <ThemeToggle client:load />
           </header>
           <div class="layout__content">
             <slot />

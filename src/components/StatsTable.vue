@@ -1,33 +1,31 @@
 <script setup lang="ts">
-import type { PageStats } from '../types/stamp';
+import type { PageStatsResult } from '../types/stamp';
 
 interface Props {
-  data: Record<string, PageStats>;
+  data: PageStatsResult[];
 }
 
 defineProps<Props>();
-
-function getEntries(data: Record<string, PageStats>): [string, PageStats][] {
-  return Object.entries(data);
-}
 </script>
 
 <template>
-  <table class="stats-table">
+  <div v-if="data.length === 0" class="stats-table__empty">
+    No data available
+  </div>
+  <table v-else class="stats-table">
     <thead class="stats-table__head">
       <tr>
         <th class="stats-table__cell stats-table__cell--header">Page</th>
-        <th class="stats-table__cell stats-table__cell--header">Views</th>
+        <th class="stats-table__cell stats-table__cell--header stats-table__cell--number">Views</th>
+        <th class="stats-table__cell stats-table__cell--header stats-table__cell--number">Unique</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="[page, stats] in getEntries(data)" :key="page">
-        <td class="stats-table__cell">{{ page }}</td>
-        <td class="stats-table__cell stats-table__cell--number">{{ stats.count }}</td>
+      <tr v-for="row in data" :key="row.page" class="stats-table__row">
+        <td class="stats-table__cell stats-table__cell--page">{{ row.page }}</td>
+        <td class="stats-table__cell stats-table__cell--number">{{ row.totalViews }}</td>
+        <td class="stats-table__cell stats-table__cell--number stats-table__cell--muted">{{ row.uniqueVisits }}</td>
       </tr>
     </tbody>
   </table>
-  <div v-if="getEntries(data).length === 0" class="stats-table__empty">
-    No data available
-  </div>
 </template>

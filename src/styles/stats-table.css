@@ -24,6 +24,19 @@
 
 .stats-table__cell--number {
   font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.stats-table__cell--page {
+  color: var(--color-text);
+}
+
+.stats-table__cell--muted {
+  color: var(--color-text-muted);
+}
+
+.stats-table__row:last-child .stats-table__cell {
+  border-bottom: none;
 }
 
 .stats-table__empty {

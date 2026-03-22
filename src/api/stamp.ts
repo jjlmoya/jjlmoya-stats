@@ -12,8 +12,8 @@ export function getStats(params: StatsParams): Promise<StatsResponse> {
   return get<StatsResponse>('/stamp/stats', query);
 }
 
-export function getFlow(from: string, to: string): Promise<FlowResponse> {
-  return get<FlowResponse>('/stamp/flow', { from, to });
+export function getFlow(visitId: string): Promise<FlowResponse> {
+  return get<FlowResponse>('/stamp/flow', { visitId });
 }
 
 export function createStatsToken(

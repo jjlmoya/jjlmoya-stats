@@ -7,25 +7,18 @@ export interface StatsParams {
   token?: string;
 }
 
-export interface PageStats {
-  count: number;
-}
-
-export interface FlowNode {
+export interface PageStatsResult {
   page: string;
-  count: number;
+  totalViews: number;
+  uniqueVisits: number;
 }
 
-export interface FlowEdge {
-  from: string;
-  to: string;
-  count: number;
+export interface PageView {
+  id: string;
+  page: string;
+  visitId: string | null;
+  createdAt: string;
 }
 
-export interface FlowData {
-  nodes: FlowNode[];
-  edges: FlowEdge[];
-}
-
-export type StatsResponse = ApiResponse<Record<string, PageStats>>;
-export type FlowResponse = ApiResponse<FlowData>;
+export type StatsResponse = ApiResponse<PageStatsResult[]>;
+export type FlowResponse = ApiResponse<PageView[]>;
