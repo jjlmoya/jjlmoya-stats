@@ -5,7 +5,7 @@ import {
 } from '../utils/token';
 import type { RefreshResponse } from '../types/auth';
 
-const BASE_URL = 'https://api.jjlmoya.es/api/v1';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL as string;
 let refreshPromise: Promise<boolean> | null = null;
 
 async function attemptRefresh(): Promise<boolean> {
@@ -40,5 +40,7 @@ export async function handleUnauthorized(): Promise<boolean> {
 
 export function redirectToLogin(): void {
   clearTokens();
-  window.location.href = '/login';
+  if (typeof window !== 'undefined') {
+    window.location.href = '/login';
+  }
 }

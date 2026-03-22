@@ -6,7 +6,7 @@ export function useAuthGuard(): void {
 
   function checkAccess(): void {
     if (loading.value) return;
-    if (!isAuthenticated.value) {
+    if (!isAuthenticated.value && typeof window !== 'undefined') {
       window.location.href = '/login';
     }
   }
