@@ -4,40 +4,16 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.flow-detail-id {
-  font-family: var(--font-family);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-.flow-detail-time {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
-
-.flow-list__arrow {
-  color: var(--color-accent);
-  opacity: 0.6;
-}
-
-.flow-list__empty--card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-}
-
-.flow-list__cards {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-}
-
-.flow-list__loading-centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .visit-table__row {
   cursor: pointer;
+}
+
+.visit-table__row--even {
+  background-color: var(--color-surface);
+}
+
+.visit-table__row--odd {
+  background-color: var(--color-bg);
 }
 
 .visit-table__id {
@@ -45,8 +21,58 @@
   font-size: var(--font-size-xs);
 }
 
+.visit-table--expander-col {
+  width: 40px;
+}
+
+.visit-table__expanded-row {
+  background-color: var(--color-surface-hover);
+}
+
+.visit-table__expanded-cell {
+  padding: var(--spacing-lg) var(--spacing-xl) !important;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.visit-table__loader {
+  padding: var(--spacing-md);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+.visit-table__flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.visit-table__flow-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.visit-table__flow-index {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  min-width: 20px;
+}
+
+.visit-table__flow-page {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  word-break: break-all;
+}
+
+.visit-table__flow-arrow {
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
 @media (width <= 768px) {
-  .stats-table__cell:nth-child(3) {
+  .stats-table__cell:nth-child(4) {
     display: none;
   }
 }
