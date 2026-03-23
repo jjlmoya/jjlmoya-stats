@@ -81,7 +81,11 @@ function getDayParityClass(dateStr: string): string {
         type="text"
         placeholder="Buscar por ID de visita o página..."
       />
-      <button v-if="search" class="stats-table__search-clear" @click="search = ''">
+      <button
+        v-if="search"
+        class="stats-table__search-clear"
+        @click="search = ''"
+      >
         <X :size="14" />
       </button>
     </div>
@@ -92,18 +96,22 @@ function getDayParityClass(dateStr: string): string {
       <thead class="stats-table__head">
         <tr>
           <th class="stats-table__cell stats-table__cell--header visit-table--expander-col" />
-          <th v-for="h in [{k: 'startedAt', l: 'Actividad'}, {k: 'visitId', l: 'ID'}, {k: 'firstPage', l: 'Inicio'}]" 
-              :key="h.k"
-              class="stats-table__cell stats-table__cell--header stats-table__cell--sortable" 
-              @click="toggleSort(h.k as any)">
+          <th 
+            v-for="h in [{k: 'startedAt', l: 'Actividad'}, {k: 'visitId', l: 'ID'}, {k: 'firstPage', l: 'Inicio'}]" 
+            :key="h.k"
+            class="stats-table__cell stats-table__cell--header stats-table__cell--sortable" 
+            @click="toggleSort(h.k as any)"
+          >
             <div class="stats-table__header-content">
               {{ h.l }}
               <ChevronUp v-if="sortBy === h.k && sortOrder === 'asc'" :size="12" />
               <ChevronDown v-if="sortBy === h.k && sortOrder === 'desc'" :size="12" />
             </div>
           </th>
-          <th class="stats-table__cell stats-table__cell--header stats-table__cell--sortable stats-table__cell--number" 
-              @click="toggleSort('pageCount')">
+          <th 
+            class="stats-table__cell stats-table__cell--header stats-table__cell--sortable stats-table__cell--number" 
+            @click="toggleSort('pageCount')"
+          >
             <div class="stats-table__header-content stats-table__header-content--right">
               Páginas
               <ChevronUp v-if="sortBy === 'pageCount' && sortOrder === 'asc'" :size="12" />
