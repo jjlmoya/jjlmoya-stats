@@ -1,5 +1,5 @@
 import { get, post } from './client';
-import type { StatsParams, StatsResponse, FlowResponse } from '../types/stamp';
+import type { StatsParams, StatsResponse, FlowResponse, VisitsResponse } from '../types/stamp';
 import type { ApiResponse } from '../types/api';
 
 export function getStats(params: StatsParams): Promise<StatsResponse> {
@@ -14,6 +14,13 @@ export function getStats(params: StatsParams): Promise<StatsResponse> {
 
 export function getFlow(visitId: string): Promise<FlowResponse> {
   return get<FlowResponse>('/stamp/flow', { visitId });
+}
+
+export function getVisits(params: StatsParams): Promise<VisitsResponse> {
+  return get<VisitsResponse>('/stamp/visits', {
+    from: params.from,
+    to: params.to,
+  });
 }
 
 export function createStatsToken(

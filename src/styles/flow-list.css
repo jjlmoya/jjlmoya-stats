@@ -1,76 +1,52 @@
-.flow-search {
-  display: flex;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
+.flow-detail-header {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.flow-search__input {
-  flex: 1;
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-sm);
-  color: var(--color-text);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-  outline: none;
-}
-
-.flow-search__input:focus {
-  border-color: var(--color-text-muted);
-}
-
-.flow-search__button {
-  padding: var(--spacing-sm) var(--spacing-lg);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-bg);
-  background-color: var(--color-text);
-  border: none;
-  border-radius: var(--border-radius-md);
-  cursor: pointer;
-}
-
-.flow-search__button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.flow-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
-.flow-list__item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-md);
-}
-
-.flow-list__index {
+.flow-detail-id {
+  font-family: var(--font-family);
   font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
   color: var(--color-text-muted);
-  min-width: 20px;
 }
 
-.flow-list__page {
-  flex: 1;
-  font-size: var(--font-size-sm);
-  color: var(--color-text);
+.flow-detail-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 .flow-list__arrow {
-  color: var(--color-text-muted);
+  color: var(--color-accent);
+  opacity: 0.6;
 }
 
-.flow-list__empty {
-  padding: var(--spacing-3xl);
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  text-align: center;
+.flow-list__empty--card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+}
+
+.flow-list__cards {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.flow-list__loading-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visit-table__row {
+  cursor: pointer;
+}
+
+.visit-table__id {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+}
+
+@media (width <= 768px) {
+  .stats-table__cell:nth-child(3) {
+    display: none;
+  }
 }

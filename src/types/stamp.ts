@@ -20,5 +20,13 @@ export interface PageView {
   createdAt: string;
 }
 
+export interface VisitSummary {
+  visitId: string;
+  pageCount: number;
+  firstPage: string;
+  startedAt: string;
+}
+
 export type StatsResponse = ApiResponse<PageStatsResult[]>;
 export type FlowResponse = ApiResponse<PageView[]>;
+export type VisitsResponse = ApiResponse<VisitSummary[]>;
