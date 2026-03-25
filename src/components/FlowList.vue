@@ -77,3 +77,8 @@ async function onPeriodChange(from: string, to: string, label: string): Promise<
     </template>
   </div>
 </template>
+
+<style scoped>
+@import "./FlowList.css";
+</style>
+

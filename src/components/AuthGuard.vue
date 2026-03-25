@@ -12,3 +12,8 @@ useAuthGuard();
   </div>
   <slot v-else-if="isAuthenticated" />
 </template>
+
+<style scoped>
+@import "./AuthGuard.css";
+</style>
+

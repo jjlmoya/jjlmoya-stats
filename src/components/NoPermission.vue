@@ -13,3 +13,8 @@ import { ShieldOff } from 'lucide-vue-next';
     </p>
   </div>
 </template>
+
+<style scoped>
+@import "./NoPermission.css";
+</style>
+

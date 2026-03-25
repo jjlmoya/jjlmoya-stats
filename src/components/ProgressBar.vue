@@ -16,18 +16,12 @@ const width = computed(() => props.pct + '%');
 </template>
 
 <style scoped>
-.progress-bar {
-  height: 4px;
-  background-color: var(--color-border);
-  border-radius: 2px;
-  overflow: hidden;
-}
+@import "./ProgressBar.css";
 
 .progress-bar__fill {
-  height: 100%;
-  background-color: var(--color-accent);
-  border-radius: 2px;
-  transition: width 0.3s ease;
   width: v-bind(width);
 }
 </style>
+
+
+

@@ -2,7 +2,7 @@
 import { ArrowDown } from 'lucide-vue-next';
 import type { PageView } from '../types/stamp';
 
-const props = defineProps<{
+defineProps<{
   views: PageView[];
   loading: boolean;
 }>();
@@ -49,5 +49,10 @@ function getDuration(current: PageView, next: PageView): string {
     </template>
   </div>
 </template>
+
+<style scoped>
+@import "./VisitFlow.css";
+</style>
+
 
 

@@ -74,3 +74,8 @@ function onPeriodChange(from: string, to: string, label: string): void {
     </template>
   </div>
 </template>
+
+<style scoped>
+@import "./OverviewDashboard.css";
+</style>
+

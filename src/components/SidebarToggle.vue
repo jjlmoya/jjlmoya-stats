@@ -23,3 +23,8 @@ onMounted(() => {
     <Menu v-else :size="20" />
   </button>
 </template>
+
+<style scoped>
+@import "./SidebarToggle.css";
+</style>
+

@@ -38,3 +38,9 @@ const formatDelta = (delta?: number): string => {
     </span>
   </div>
 </template>
+
+<style scoped>
+@import "./StatCard.css";
+</style>
+
+

@@ -99,3 +99,9 @@ onMounted(() => selectPeriod(props.initialPeriod));
     </div>
   </div>
 </template>
+
+<style scoped>
+@import "./PeriodFilter.css";
+</style>
+
+

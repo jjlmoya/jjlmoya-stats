@@ -35,3 +35,8 @@ function toggle(): void {
     <Moon v-else class="theme-toggle__icon" :size="16" />
   </button>
 </template>
+
+<style scoped>
+@import "./ThemeToggle.css";
+</style>
+

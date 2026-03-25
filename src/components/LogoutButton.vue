@@ -19,3 +19,8 @@ async function handleLogout(): Promise<void> {
     Logout
   </button>
 </template>
+
+<style scoped>
+@import "./LogoutButton.css";
+</style>
+

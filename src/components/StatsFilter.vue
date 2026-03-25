@@ -39,3 +39,8 @@ function handleSubmit(): void {
     <button class="stats-filter__button" type="submit">Search</button>
   </form>
 </template>
+
+<style scoped>
+@import "./StatsFilter.css";
+</style>
+

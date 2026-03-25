@@ -11,7 +11,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
 const sortKey = ref<SortKey>('totalViews');
 const sortDir = ref<SortDir>('desc');
 const search = ref('');
@@ -112,3 +111,8 @@ function sort(key: SortKey): void {
     </table>
   </div>
 </template>
+
+<style scoped>
+@import "./StatsTable.css";
+</style>
+

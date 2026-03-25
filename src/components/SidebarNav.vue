@@ -33,3 +33,8 @@ function isActive(href: string): boolean {
     </a>
   </nav>
 </template>
+
+<style scoped>
+@import "./SidebarNav.css";
+</style>
+

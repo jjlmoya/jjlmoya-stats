@@ -104,7 +104,7 @@ function getDayParityClass(dateStr: string): string {
             class="stats-table__cell stats-table__cell--header stats-table__cell--sortable" 
             @click="toggleSort(h.k as any)"
           >
-            <div class="stats-table__header-content">
+            <div class="stats-table__head-content">
               {{ h.l }}
               <ChevronUp v-if="sortBy === h.k && sortOrder === 'asc'" :size="12" />
               <ChevronDown v-if="sortBy === h.k && sortOrder === 'desc'" :size="12" />
@@ -114,7 +114,7 @@ function getDayParityClass(dateStr: string): string {
             class="stats-table__cell stats-table__cell--header stats-table__cell--sortable stats-table__cell--number" 
             @click="toggleSort('pageCount')"
           >
-            <div class="stats-table__header-content stats-table__header-content--right">
+            <div class="stats-table__head-content stats-table__head-content--right">
               Páginas
               <ChevronUp v-if="sortBy === 'pageCount' && sortOrder === 'asc'" :size="12" />
               <ChevronDown v-if="sortBy === 'pageCount' && sortOrder === 'desc'" :size="12" />
@@ -142,3 +142,8 @@ function getDayParityClass(dateStr: string): string {
     </table>
   </div>
 </template>
+
+<style scoped>
+@import "./VisitTable.css";
+</style>
+

@@ -37,3 +37,8 @@ async function handleLogin(provider: OAuthProvider): Promise<void> {
     </button>
   </div>
 </template>
+
+<style scoped>
+@import "./LoginButtons.css";
+</style>
+
