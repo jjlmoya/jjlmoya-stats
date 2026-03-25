@@ -1,5 +1,5 @@
 import { get, post } from './client';
-import type { StatsParams, StatsResponse, FlowResponse, VisitsResponse } from '../types/stamp';
+import type { StatsParams, StatsResponse, FlowResponse, VisitsResponse, TimeSeriesParams, TimeSeriesResponse } from '../types/stamp';
 import type { ApiResponse } from '../types/api';
 
 export function getStats(params: StatsParams): Promise<StatsResponse> {
@@ -21,6 +21,16 @@ export function getVisits(params: StatsParams): Promise<VisitsResponse> {
     from: params.from,
     to: params.to,
   });
+}
+
+export function getTimeSeries(params: TimeSeriesParams): Promise<TimeSeriesResponse> {
+  const query: Record<string, string> = {
+    page: params.page,
+    from: params.from,
+    to: params.to,
+  };
+  if (params.granularity) query['granularity'] = params.granularity;
+  return get<TimeSeriesResponse>('/stamp/stats/timeseries', query);
 }
 
 export function createStatsToken(

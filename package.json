@@ -19,8 +19,10 @@
   "dependencies": {
     "@astrojs/vue": "^6.0.1",
     "astro": "^6.0.8",
+    "chart.js": "^4.5.1",
     "lucide-vue-next": "^0.577.0",
-    "vue": "^3.5.30"
+    "vue": "^3.5.30",
+    "vue-chartjs": "^5.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

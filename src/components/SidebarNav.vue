@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LayoutDashboard, BarChart2, GitBranch } from 'lucide-vue-next';
+import { LayoutDashboard, BarChart2, GitBranch, TrendingUp } from 'lucide-vue-next';
 import type { Component } from 'vue';
 
 interface NavItem {
@@ -12,6 +12,7 @@ const items: NavItem[] = [
   { label: 'Overview', href: '/', icon: LayoutDashboard },
   { label: 'Stats', href: '/stats', icon: BarChart2 },
   { label: 'Flow', href: '/flow', icon: GitBranch },
+  { label: 'Páginas', href: '/pages', icon: TrendingUp },
 ];
 
 function isActive(href: string): boolean {

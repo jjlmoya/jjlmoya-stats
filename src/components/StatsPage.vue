@@ -17,6 +17,11 @@ const totalUniqueViews = computed(() => data.value.reduce((acc, r) => acc + r.un
 const pagesCount = computed(() => data.value.length);
 </script>
 
+<style scoped>
+@import "./StatsPage.css";
+</style>
+
+
 <template>
   <div class="overview">
     <div class="overview__header">

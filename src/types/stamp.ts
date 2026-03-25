@@ -1,5 +1,20 @@
 import type { ApiResponse } from './api';
 
+export interface TimeSeriesParams {
+  page: string;
+  from: string;
+  to: string;
+  granularity?: 'day' | 'hour';
+}
+
+export interface TimeSeriesPoint {
+  date: string;
+  totalViews: number;
+  uniqueVisits: number;
+}
+
+export type TimeSeriesResponse = ApiResponse<TimeSeriesPoint[]>;
+
 export interface StatsParams {
   pages?: string;
   from: string;
