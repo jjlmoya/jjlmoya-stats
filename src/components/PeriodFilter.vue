@@ -8,6 +8,7 @@ interface Period {
 
 const PERIODS: Period[] = [
   { label: 'Hoy', key: 'today' },
+  { label: 'Ayer', key: 'yesterday' },
   { label: '24h', key: '24h' },
   { label: '48h', key: '48h' },
   { label: '7 días', key: '7d' },
@@ -43,6 +44,11 @@ function rangeForKey(key: string): { from: string; to: string } {
   if (key === 'today') {
     const from = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     return { from: from.toISOString(), to };
+  }
+  if (key === 'yesterday') {
+    const from = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    const to = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, -1);
+    return { from: from.toISOString(), to: to.toISOString() };
   }
   const hours: Record<string, number> = { '24h': 24, '48h': 48, '7d': 168, '30d': 720, '90d': 2160 };
   const from = new Date(now.getTime() - (hours[key] ?? 24) * 60 * 60 * 1000);

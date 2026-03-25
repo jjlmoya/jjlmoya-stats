@@ -13,7 +13,7 @@ function onPeriodChange(from: string, to: string): void {
 
 <template>
   <div class="overview">
-    <PeriodFilter initial-period="7d" @change="onPeriodChange" />
+    <PeriodFilter initial-period="today" @change="onPeriodChange" />
     <div v-if="loading" class="auth-guard">
       <span class="auth-guard__text">Cargando stats...</span>
     </div>

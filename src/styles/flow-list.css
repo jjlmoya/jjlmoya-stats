@@ -66,10 +66,35 @@
   word-break: break-all;
 }
 
-.visit-table__flow-arrow {
-  color: var(--color-accent);
-  opacity: 0.5;
+.visit-table__flow-transition-v {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 28px;
+  gap: var(--spacing-sm);
+  margin: 2px 0;
 }
+
+.visit-table__flow-line {
+  width: 2px;
+  height: 12px;
+  background-color: var(--color-border);
+  border-radius: 1px;
+}
+
+.visit-table__flow-duration-v {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
 
 @media (width <= 768px) {
   .stats-table__cell:nth-child(4) {

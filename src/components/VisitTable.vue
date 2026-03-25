@@ -55,7 +55,9 @@ async function toggleRow(visitId: string) {
     loadingFlows.value[visitId] = true;
     try {
       const res = await getFlow(visitId);
-      flowViews.value[visitId] = res.data;
+      flowViews.value[visitId] = [...res.data].sort((a, b) => 
+        a.createdAt.localeCompare(b.createdAt)
+      );
     } catch { /* Suppress */ }
     loadingFlows.value[visitId] = false;
   }
