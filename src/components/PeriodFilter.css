@@ -4,10 +4,35 @@
   gap: var(--spacing-md);
 }
 
+.period-filter__row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.period-filter__group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.period-filter__group-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
 .period-filter__buttons {
   display: flex;
   gap: var(--spacing-xs);
-  flex-wrap: wrap;
+}
+
+.period-filter__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border);
+  flex-shrink: 0;
 }
 
 .period-filter__btn {
@@ -20,6 +45,7 @@
   border-radius: var(--border-radius-md);
   cursor: pointer;
   transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  white-space: nowrap;
 }
 
 .period-filter__btn:hover {
